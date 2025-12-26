@@ -9,3 +9,16 @@
 .sidebar{
   height: 800px;
 }
+
+.hastag{
+  margin: 0px 3px;
+}
+
+.card{
+  margin: 20px 25px;
+  
+}
+
+.reactions{
+  margin: 10px 0 0 0 ;
+}
