@@ -29,15 +29,11 @@ const DEFAULT_POST_LIST = [
 
 // 3️⃣ Reducer
 const postListReducer = (currPostList, action) => {
-  if (action.type === "ADD_POST") {
-    return [action.payload, ...currPostList];
-  }
-
   if (action.type === "DELETE_POST") {
-    return currPostList.filter((post) => post.id !== action.payload);
+    return currPostList.filter((post) => post.id !== action.payload.postId);
   }
 
-  return currPostList;
+  return currPostList; // ✅ MUST exist
 };
 
 // 4️⃣ Provider Component
@@ -47,17 +43,14 @@ const PostListProvider = ({ children }) => {
     DEFAULT_POST_LIST
   );
 
-  const addPost = (post) => {
-    dispatchPostList({
-      type: "ADD_POST",
-      payload: post,
-    });
-  };
+  const addPost = (post) => {};
 
   const deletePost = (postId) => {
     dispatchPostList({
       type: "DELETE_POST",
-      payload: postId,
+      payload: {
+        postId,
+      },
     });
   };
 
