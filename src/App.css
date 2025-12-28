@@ -7,7 +7,7 @@
 }
 
 .sidebar{
-  height: 800px;
+  height: 1100px;
 }
 
 .hastag{
@@ -21,4 +21,9 @@
 
 .reactions{
   margin: 10px 0 0 0 ;
+}
+
+.createpost{
+  width: 70%;
+  margin: 50px;
 }

@@ -29,8 +29,14 @@ const DEFAULT_POST_LIST = [
 
 // 3️⃣ Reducer
 const postListReducer = (currPostList, action) => {
+
   if (action.type === "DELETE_POST") {
     return currPostList.filter((post) => post.id !== action.payload.postId);
+  }
+ 
+  else if(action.type==="ADD_POST"){
+    // return newPostList=[action.payload,...currPostList]
+    currPostList=[action.payload,...currPostList]
   }
 
   return currPostList; // ✅ MUST exist
@@ -43,7 +49,19 @@ const PostListProvider = ({ children }) => {
     DEFAULT_POST_LIST
   );
 
-  const addPost = (post) => {};
+  const addPost = (userId,title,body,reactions,tags) => {
+    dispatchPostList({
+      type: "ADD_POST",
+      payload: {
+        id:Date.now(),
+        title: title,
+        body: body,
+        reactions: reactions,
+        userId: userId,
+        tags: tags,
+      },
+    });
+  };
 
   const deletePost = (postId) => {
     dispatchPostList({
